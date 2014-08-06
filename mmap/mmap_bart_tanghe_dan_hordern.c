@@ -121,7 +121,12 @@ static const struct file_operations my_fops = {
 
 static int __init mmapexample_module_init(void)
 {
+	
 	file1 = debugfs_create_file("mmap_example", 0644, NULL, NULL, &my_fops);
+	if(file1 == NULL)
+	{
+		printk("Error in creating the mmap_example debufs file node\n");
+	}
 	return 0;
 }
 
