@@ -106,7 +106,7 @@ int my_open(struct inode *inode, struct file *filp)
 	struct mmap_info *info = kmalloc(sizeof(struct mmap_info), GFP_KERNEL);
 	/* obtain new memory */
     	info->data = (char *)get_zeroed_page(GFP_KERNEL);
-	memcpy(info->data, "hello from kernel this is file: ", 32);
+	memcpy(info->data, "Kernel: Writing hello message", 32);
 	memcpy(info->data + 32, filp->f_dentry->d_name.name, strlen(filp->f_dentry->d_name.name));
 	/* assign this info struct to the file */
 	filp->private_data = info;
